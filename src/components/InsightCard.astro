@@ -1,0 +1,29 @@
+---
+const { icon, title, value, percent, color } = Astro.props;
+---
+
+<div class="bg-white shadow-md rounded-2xl p-5 flex flex-col gap-3 hover:shadow-lg transition">
+  <div class="flex justify-between items-center">
+    <span class={`material-symbols-sharp text-${color}-500 text-4xl`}>{icon}</span>
+    <div class="text-right">
+      <h3 class="text-gray-500 font-medium">{title}</h3>
+      <h1 class="text-3xl font-bold text-gray-800">{value}</h1>
+    </div>
+  </div>
+  <div class="flex justify-between items-center">
+    <div class="relative w-16 h-16">
+      <svg class="w-full h-full">
+        <circle
+          cx="38"
+          cy="38"
+          r="36"
+          class={`stroke-${color}-400 stroke-[6] fill-none opacity-20`}
+        ></circle>
+      </svg>
+      <div class="absolute inset-0 flex items-center justify-center">
+        <p class={`text-lg font-semibold text-${color}-500`}>{percent}%</p>
+      </div>
+    </div>
+    <small class="text-gray-500">Últimas 24 horas</small>
+  </div>
+</div>

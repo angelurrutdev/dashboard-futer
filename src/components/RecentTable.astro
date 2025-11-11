@@ -1,0 +1,47 @@
+---
+const { title, headers, rows } = Astro.props;
+---
+
+<section class="bg-white shadow-md rounded-2xl p-6">
+  <h2 class="text-xl font-semibold text-gray-800 mb-4">{title}</h2>
+
+  <div class="overflow-x-auto">
+    <table class="w-full border-collapse text-left">
+      <thead class="border-b border-gray-200 text-gray-600">
+        <tr>
+          {headers.map((header: unknown) => (
+            <th class="py-2 px-3">{header}</th>
+          ))}
+          <th class="py-2 px-3"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        {rows.map((row: any[]) => (
+          <tr class="border-b border-gray-100 hover:bg-gray-50 transition">
+            {row.map((cell: unknown, index: number) => (
+              <td
+                class={`py-2 px-3 ${
+                  index === row.length - 2
+                    ? "text-yellow-600 font-medium"
+                    : index === row.length - 1
+                    ? "text-blue-500 font-semibold cursor-pointer hover:underline"
+                    : ""
+                }`}
+              >
+                {cell}
+              </td>
+            ))}
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+
+  <a
+    href="#"
+    class="text-blue-500 font-medium hover:underline block mt-3 text-right"
+  >
+    Mostrar todos
+  </a>
+</section>
