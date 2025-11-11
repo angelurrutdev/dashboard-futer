@@ -1,0 +1,47 @@
+---
+import InsightCard from "../components/InsightCard.astro";
+import RecentTable from "../components/RecentTable.astro";
+
+// Datos de tarjetas de métricas
+const insights = [
+  { icon: "analytics", title: "Total pagados", value: 44, percent: 50, color: "blue" },
+  { icon: "bar_chart", title: "Total por pagar", value: 50, percent: 35, color: "orange" },
+  { icon: "stacked_line_chart", title: "Total faltante", value: 20, percent: 36, color: "green" },
+];
+
+// Datos de la tabla
+const condoHeaders = [
+  "Nombre del condominio",
+  "Nombre del propietario",
+  "Deuda",
+  "Estatus",
+];
+
+const condoRows = [
+  ["+Condominio", "Samael", "En progreso", "Pendiente", "Detalles"],
+  ["+Condominio", "Gabriel", "En progreso", "Pendiente", "Detalles"],
+  ["+Condominio", "Rafael", "En progreso", "Pendiente", "Detalles"],
+  ["+Condominio", "Uriel", "En progreso", "Pendiente", "Detalles"],
+  ["+Condominio", "Miguel", "En progreso", "Pendiente", "Detalles"],
+];
+---
+
+<main class="p-6 space-y-8">
+  <!-- Encabezado -->
+  <div class="flex justify-between items-center">
+    <h1 class="text-3xl font-semibold text-gray-800">Dashboard</h1>
+    <input type="date" class="border border-gray-300 rounded-lg px-3 py-2 text-gray-700" />
+  </div>
+
+  <!-- Sección de métricas -->
+  <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    {insights.map((i) => <InsightCard {...i} />)}
+  </section>
+
+  <!-- Tabla dinámica -->
+  <RecentTable
+    title="Condominios recientes"
+    headers={condoHeaders}
+    rows={condoRows}
+  />
+</main>
